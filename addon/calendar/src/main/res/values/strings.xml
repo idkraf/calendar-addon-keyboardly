@@ -1,0 +1,8 @@
+<resources>
+    <string name="kalendars">Kalendars</string>
+    <string name="accounts">Accounts</string>
+    <string name="syncKalendar">Sync</string>
+    <string name="login_to_your_google_account_to_continue">Login to your Google account to continue</string>
+    <string name="add_event">Add Event</string>
+    <string name="save">Save</string>
+</resources>

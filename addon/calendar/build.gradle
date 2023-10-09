@@ -1,0 +1,68 @@
+plugins {
+    id 'com.android.dynamic-feature'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+android {
+    compileSdk rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        minSdk rootProject.ext.minSdkVersion
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "int", "ADD_ON_VERSION", "1"
+        buildConfigField "String", "ADD_ON_VERSION_NAME", "\"1.0\""
+        buildConfigField "String", "ADD_ON_ID", "\"calendar\""
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    packagingOptions {
+        jniLibs {
+            excludes += ['META-INF/*']
+        }
+        resources {
+            excludes += ['META-INF/*']
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+    namespace 'app.keyboardly.calendar'
+
+}
+
+dependencies {
+    implementation project(":app")
+    implementation project(":libraries:style")
+    implementation project(":libraries:actionview")
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    implementation "androidx.core:core-ktx:$coreKtxVersion"
+    implementation "androidx.databinding:viewbinding:$view_binding_version"
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    implementation "com.google.android.material:material:$materialVersion"
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    implementation "com.google.dagger:dagger:$dagger_version"
+    implementation "com.google.dagger:dagger-android-support:$dagger_version"
+
+    implementation 'com.google.firebase:firebase-auth:22.1.2'
+    implementation 'com.google.android.gms:play-services-auth:20.7.0'
+    implementation 'com.google.android.gms:play-services-identity:18.0.1'
+    implementation 'com.google.apis:google-api-services-calendar:v3-rev275-1.23.0'
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+
+}

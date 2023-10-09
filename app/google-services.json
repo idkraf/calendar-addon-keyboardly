@@ -1,0 +1,100 @@
+{
+  "project_info": {
+    "project_number": "630478795722",
+    "project_id": "keyboardly-39885",
+    "storage_bucket": "keyboardly-39885.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630478795722:android:0404ffbf84520304cfd533",
+        "android_client_info": {
+          "package_name": "app.keyboardly.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "630478795722-4vd75dv9l27hjt37mkpesbnhit38h3rd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.keyboardly.android",
+            "certificate_hash": "582838d285fc6de1c5ff1d220ac75da26d9f7bf4"
+          }
+        },
+        {
+          "client_id": "630478795722-7l1j5eteesh3admbkhrn723vo18gfsou.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.keyboardly.android",
+            "certificate_hash": "d4fdbc601e64b3b3c1e86cd6724d35766fe35fff"
+          }
+        },
+        {
+          "client_id": "630478795722-bf4jih9oiacl8ag8hternjl9mp59557j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.keyboardly.android",
+            "certificate_hash": "50120e34a4edb0435a94a893be34d7bc1309c217"
+          }
+        },
+        {
+          "client_id": "630478795722-rssbh0835c00ovc76sio2sd5ihdo52b1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.keyboardly.android",
+            "certificate_hash": "58025d627486b183cb81bad461fd76cf639e53cf"
+          }
+        },
+        {
+          "client_id": "630478795722-rab0ge5ldruc3d736s5skr4094ud8ve6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjvkCN07naZkBd21hI3fnlAUQC4EJ9g-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "630478795722-53sibh11hkcnvuumfb4tgd58a0r5hdmv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630478795722:android:e39c100ce68782fdcfd533",
+        "android_client_info": {
+          "package_name": "app.keyboardly.development"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "630478795722-rab0ge5ldruc3d736s5skr4094ud8ve6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjvkCN07naZkBd21hI3fnlAUQC4EJ9g-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "630478795722-53sibh11hkcnvuumfb4tgd58a0r5hdmv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
