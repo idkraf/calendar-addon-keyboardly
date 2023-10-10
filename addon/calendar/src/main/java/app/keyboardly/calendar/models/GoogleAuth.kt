@@ -13,4 +13,37 @@ class GoogleAuth {
     }
 
     constructor() {}
+
+
+    fun getCalendarDisplayName(): String? {
+        return displayName
+    }
+
+    fun setCalendarDisplayName(displayName: String?) {
+        this.displayName = displayName
+    }
+
+    fun getCalendarAuthCode(): String? {
+        return authCode
+    }
+
+    fun setCalendarAuthCode(authCode: String?) {
+        this.authCode = authCode
+    }
+
+    fun getCalendarEmail(): String? {
+        return email
+    }
+
+    fun setCalendarEmail(email: String?) {
+        this.email = email
+    }
+
+    fun getCalendarAccessToken(): String? {
+        return accessToken
+    }
+
+    fun setCalendarAccessToken(accessToken: String?) {
+        this.accessToken = accessToken
+    }
 }

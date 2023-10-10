@@ -236,6 +236,5 @@ interface KeyboardActionDependency {
      * @param view : should have parent KeyboardActionView
      */
     fun setTopActionView(view: View)
-
-    fun startActivityForResult(intent: Intent, int: Int)
+    //fun startActivityForResult(intent: Intent, int: Int)
 }

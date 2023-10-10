@@ -19,7 +19,14 @@ class CalendarListActionView(
 
     private fun initAction() {
         binding.apply {
+
             back.apply {
+                setOnClickListener {
+                    dependency.viewAddOnNavigation()
+                }
+            }
+
+            backBtn.apply {
                 setOnClickListener {
                     dependency.viewAddOnNavigation()
                 }

@@ -54,6 +54,9 @@ class KalPref(context: Context?) {
         putString("accountslist", value)
     }
 
+    fun getAkun(): ArrayList<String>? {
+        return accounts
+    }
     fun clearAccountsAndAll() {
         val editor = sharedPref.edit()
         for (i in accounts!!.indices) {

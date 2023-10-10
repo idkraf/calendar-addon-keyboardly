@@ -18,8 +18,8 @@ import android.view.inputmethod.InputConnection
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.FrameLayout
-import androidx.core.content.getSystemService
 import androidx.core.view.isVisible
+import app.keyboardly.dev.HomeActivity
 import app.keyboardly.dev.R
 import app.keyboardly.dev.keyboard.di.BaseComponent
 import app.keyboardly.dev.keyboard.di.DaggerBaseComponent
@@ -53,7 +53,7 @@ open class KokoKeyboardView : ExpandableLayout {
     private var activeEditField: EditText? = null
     private val keyboards = HashMap<EditText?, KeyboardLayout>()
     private var keyboardListener: KeyboardListener? = null
-    private lateinit var activity: Activity
+    //private lateinit var activity: HomeActivity
 
     private var moduleHelper: DynamicModuleHelper =
         DynamicModuleHelper(context, object : InstallFeatureCallback {
@@ -78,6 +78,7 @@ open class KokoKeyboardView : ExpandableLayout {
     }
 
     private fun init() {
+       // activity = HomeActivity()
         keyboardListener = object : KeyboardListener {
             override fun characterClicked(c: Char) {}
             override fun specialKeyClicked(keyCode: Int) {
@@ -284,9 +285,12 @@ open class KokoKeyboardView : ExpandableLayout {
                 container.setTopActionView(view)
             }
 
-            override fun startActivityForResult(intent: Intent, int: Int) {
-                activity.startActivityForResult(intent,int)
-            }
+            //override fun startActivityForResult(intent: Intent, int: Int) {
+            //    activity.getActivityResultManager().put(int, this)
+                //container.javaClass.getAc
+                //activity.startActivityForResult(intent,int)
+                //getActivityResultManager()
+            //}
 
             override fun showChipOptions(
                 list: MutableList<Chip>,

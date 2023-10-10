@@ -3,7 +3,7 @@ package app.keyboardly.sample.action.top
 import android.text.InputType
 import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.KeyboardActionView
-import app.keyboardly.sample.databinding.SampleTopViewLayoutBinding
+import app.keyboardly.sample.databinding.TopViewLayoutBinding
 
 /**
  * Created by Zainal on 18/02/2023 - 11:59
@@ -13,7 +13,7 @@ class TopActionView(
 ) : KeyboardActionView(dependency) {
 
     override fun onCreate() {
-        val binding = SampleTopViewLayoutBinding.inflate(getLayoutInflater())
+        val binding = TopViewLayoutBinding.inflate(getLayoutInflater())
         viewLayout = binding.root
 
         binding.apply {

@@ -1,8 +1,8 @@
 package app.keyboardly.dev
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
-import android.content.res.Resources.Theme
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -16,9 +16,12 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
-import androidx.navigation.ui.*
-import app.keyboardly.dev.HomeActivity.Companion.updateTheme
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupWithNavController
 import app.keyboardly.dev.databinding.ActivityHomeBinding
+import app.keyboardly.dev.keyboard.keypad.ActivityResultManager
 import timber.log.Timber
 
 
@@ -27,6 +30,10 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var mToggle: ActionBarDrawerToggle
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityHomeBinding
+    //private lateinit var mActivityResultManager: ActivityResultManager
+    //fun getActivityResultManager(): ActivityResultManager {
+    //    return mActivityResultManager
+    //}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val darkTheme = isDarkTheme(this)
@@ -226,4 +233,9 @@ class HomeActivity : AppCompatActivity() {
         private fun sharedPreferences(context: Context) =
             context.getSharedPreferences("themes", Context.MODE_PRIVATE)
     }
+
+    //override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    //    getActivityResultManager().dispatch(requestCode, resultCode, data)
+    //    super.onActivityResult(requestCode, resultCode, data)
+    //}
 }

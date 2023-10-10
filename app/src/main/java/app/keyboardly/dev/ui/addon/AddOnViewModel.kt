@@ -34,7 +34,7 @@ class AddOnViewModel : ViewModel() {
             AddOnModel(
                 22,
                 "calendar",
-                "Event",
+                "Calendar",
                 "a event add on",
                 "Keyboardly",
                 "https://keyboardly.app",

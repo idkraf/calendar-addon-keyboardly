@@ -72,6 +72,7 @@
 
 # keep di class
 -keep class app.keyboardly.sample.di.** { *; }
+-keep class app.keyboardly.calendar.di.** { *; }
 
 -dontwarn com.google.errorprone.annotations.**
 
@@ -93,6 +94,14 @@
     *;
 }
 
+#noinspection ShrinkerUnresolvedReference
+-keep class app.keyboardly.calendar.DynamicFeatureImpl {
+    #noinspection ShrinkerUnresolvedReference
+    app.keyboardly.calendar.DynamicFeatureImpl$Provider Provider;
+}
+-keep class app.keyboardly.calendar.DynamicFeatureImpl$Provider {
+    *;
+}
 #-------------------------------------------------
 # JetPack Navigation
 # This fixes: Caused by: androidx.fragment.app.Fragment$InstantiationException:
