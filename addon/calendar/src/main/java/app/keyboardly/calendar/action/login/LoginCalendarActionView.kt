@@ -2,17 +2,16 @@ package app.keyboardly.calendar.action.login
 
 import android.app.Activity
 import android.content.Intent
+import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.result.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import app.keyboardly.calendar.action.list.CalendarListActionView
+import app.keyboardly.calendar.CalendarDefaultClass
 import app.keyboardly.calendar.databinding.ActivityCalendarLoginBinding
 import app.keyboardly.calendar.models.GoogleAuth
 import app.keyboardly.calendar.models.KalPref
-import app.keyboardly.dev.HomeActivity
 import app.keyboardly.dev.R
-import app.keyboardly.lib.KeyboardActionDependency
-import app.keyboardly.lib.KeyboardActionView
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -22,41 +21,34 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-
-
-class LoginCalendarActionView(
-dependency: KeyboardActionDependency
-) : KeyboardActionView(dependency){
+import timber.log.Timber
+class LoginCalendarActionView: AppCompatActivity(){
 
     private lateinit var binding: ActivityCalendarLoginBinding
-
-    private val list = CalendarListActionView(dependency)
-
     private val kalPref: KalPref? = null
     private val googleAuth: GoogleAuth? = null
     lateinit var mGoogleSignInClient: GoogleSignInClient
     val Req_Code: Int = 123
     private lateinit var firebaseAuth: FirebaseAuth
-    //private lateinit var onResult: OnResult
-    private lateinit var activity: HomeActivity
 
-    override fun onCreate() {
-        binding = ActivityCalendarLoginBinding.inflate(getLayoutInflater());
-        viewLayout = binding.root
-        activity = HomeActivity()
-        FirebaseApp.initializeApp(dependency.getContext())
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityCalendarLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        FirebaseApp.initializeApp(this@LoginCalendarActionView)
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(dependency.getContext().getString(R.string.default_web_client_id))
+            .requestIdToken(this.getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
 
-        mGoogleSignInClient = GoogleSignIn.getClient(dependency.getContext(), gso)
+        mGoogleSignInClient = GoogleSignIn.getClient(this@LoginCalendarActionView, gso)
         firebaseAuth = FirebaseAuth.getInstance()
 
         binding.apply {
             backBtn.setOnClickListener {
-                dependency.viewAddOnNavigation()
+                finish()
             }
             buttonLogin.setOnClickListener {
                 signInGoogle()
@@ -67,18 +59,9 @@ dependency: KeyboardActionDependency
     private fun signInGoogle() {
         val signInIntent: Intent = mGoogleSignInClient.signInIntent
         resultLauncher.launch(signInIntent);
-
-        //activity.getActivityResultManager().put(Req_Code, OnResult)
-        //dependency.startActivityForResult(signInIntent, Req_Code)
-        //activity.startActivityForResult(signInIntent, Req_Code)
-        //{
-           // val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(signInIntent)
-           // handleResult(task)
-        //}
-        //dependency.getContext().startActivity()
     }
 
-    var resultLauncher = activity.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+    private var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             // There are no request codes
             val data: Intent? = result.data
@@ -87,13 +70,6 @@ dependency: KeyboardActionDependency
         }
     }
 
-    //override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-   //     if (requestCode == Req_Code) {
-   //         val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
-   //         handleResult(task)
-   //     }
-    //}
-
     private fun handleResult(completedTask: Task<GoogleSignInAccount>) {
         try {
             val account: GoogleSignInAccount? = completedTask.getResult(ApiException::class.java)
@@ -101,7 +77,8 @@ dependency: KeyboardActionDependency
                 UpdateUI(account)
             }
         } catch (e: ApiException) {
-            toast(e.toString())
+            Toast.makeText(this@LoginCalendarActionView, e.message,
+                Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -122,7 +99,13 @@ dependency: KeyboardActionDependency
                     }
 
                     //move to list
-                    dependency.setActionView(list)
+                    this.apply {
+                        //onBackPressed()
+                        //finish()
+                        val intent = Intent(this@LoginCalendarActionView, CalendarDefaultClass::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                        startActivity(intent)
+                    }
                 }
             }
         }

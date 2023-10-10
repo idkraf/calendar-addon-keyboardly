@@ -5,6 +5,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('D:\\keyboardly-dev\\keyboardly-dev-main\\keyboardly-calendar.jks')
+            keyAlias 'keyboardly'
+            storePassword 'degorie@1234'
+            keyPassword 'degorie@1234'
+        }
+    }
     namespace 'app.keyboardly.dev'
     compileSdk rootProject.ext.compileSdkVersion
 
@@ -17,6 +25,7 @@ android {
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.debug
     }
 
     kapt {
@@ -25,10 +34,12 @@ android {
 
     buildTypes {
         release {
+            signingConfig signingConfigs.debug
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
+            signingConfig signingConfigs.debug
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }

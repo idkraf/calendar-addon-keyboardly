@@ -1,30 +1,53 @@
 package app.keyboardly.calendar
 
+import android.content.Intent
 import app.keyboardly.calendar.action.list.CalendarListActionView
 import app.keyboardly.calendar.action.login.LoginCalendarActionView
 import app.keyboardly.calendar.models.KalPref
 import app.keyboardly.lib.DefaultClass
 import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.navigation.NavigationMenuModel
-
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserInfo
 
 class CalendarDefaultClass(
     dependency: KeyboardActionDependency
 ) : DefaultClass(dependency){
 
+    private lateinit var firebaseAuth: FirebaseAuth
     private val kalPref: KalPref? = null
     private val list = CalendarListActionView(dependency)
-    private val login = LoginCalendarActionView(dependency)
-
+    //private val login = LoginCalendarActionView(dependency)
     override fun getSubmenus(): MutableList<NavigationMenuModel> {
         return mutableListOf()
     }
 
     override fun onCreate() {
 
+        FirebaseApp.initializeApp(dependency.getContext())
+        firebaseAuth = FirebaseAuth.getInstance()
+
+        val user = firebaseAuth.currentUser
+        user?.let {
+            // Name, email address, and profile photo Url
+            val name = user.displayName
+            val email = user.email
+            val photoUrl = user.photoUrl
+
+            // Check if user's email is verified
+            val emailVerified = user.isEmailVerified
+
+            // The user's ID, unique to the Firebase project. Do NOT use this value to
+            // authenticate with your backend server, if you have one. Use
+            // FirebaseUser.getToken() instead.
+            val uid = user.uid
+
+
+        }
+
         init()
     }
-
     private fun init(){
         val islogin = kalPref?.isUserSignedIn
         //cek if login
@@ -32,7 +55,8 @@ class CalendarDefaultClass(
             //viewLayout = list.getView()
             dependency.setActionView(list)
         }else{
-            dependency.setActionView(login)
+            //dependency.setActionView(login)
+            dependency.getContext().startActivity(Intent(getContext(), LoginCalendarActionView::class.java))
         }
     }
 }
