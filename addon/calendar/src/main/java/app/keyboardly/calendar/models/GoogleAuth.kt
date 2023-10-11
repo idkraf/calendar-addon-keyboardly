@@ -3,6 +3,7 @@ package app.keyboardly.calendar.models
 class GoogleAuth {
     var authCode: String? = null
     var email: String? = null
+    var displayFoto: String? = null
     var displayName: String? = null
     var accessToken: String? = null
 
@@ -21,6 +22,13 @@ class GoogleAuth {
 
     fun setCalendarDisplayName(displayName: String?) {
         this.displayName = displayName
+    }
+
+    fun getCalendarDisplayFoto(): String? {
+        return displayFoto
+    }
+    fun setCalendarDisplayFoto(displayFoto: String?) {
+        this.displayFoto = displayFoto
     }
 
     fun getCalendarAuthCode(): String? {

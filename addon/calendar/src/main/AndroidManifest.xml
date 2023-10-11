@@ -21,7 +21,7 @@
     <application
         tools:ignore="MissingApplicationIcon">
         <activity
-            android:name=".action.login.LoginCalendarActionView"
+            android:name=".action.login.LoginCalendarAction"
             android:exported="true">
 
             <intent-filter>

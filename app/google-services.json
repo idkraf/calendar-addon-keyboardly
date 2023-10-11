@@ -75,6 +75,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "630478795722-dhq68ura4senmnn88gvdj2hfuldsrn2e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.keyboardly.development",
+            "certificate_hash": "942cb56b9067a7969d22f3938d1bcfcbac5f8f84"
+          }
+        },
+        {
           "client_id": "630478795722-rab0ge5ldruc3d736s5skr4094ud8ve6.apps.googleusercontent.com",
           "client_type": 3
         }

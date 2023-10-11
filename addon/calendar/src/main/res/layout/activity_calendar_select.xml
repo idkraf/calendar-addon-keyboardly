@@ -30,11 +30,11 @@
         <TextView
             android:layout_width="0dip"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
             android:layout_marginLeft="12dip"
             android:layout_marginRight="12dip"
             android:layout_weight="1"
             android:text="@string/title_calendar"
+            android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:paddingTop="10dip"
             android:paddingBottom="10dip"

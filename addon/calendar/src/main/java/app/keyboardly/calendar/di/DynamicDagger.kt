@@ -18,12 +18,17 @@ package app.keyboardly.calendar.di
 
 import app.keyboardly.calendar.CalendarDefaultClass
 import app.keyboardly.calendar.DynamicFeatureImpl
-import app.keyboardly.lib.reflector.DynamicFeature
+import app.keyboardly.calendar.http.GoogleApi
+import app.keyboardly.calendar.http.RetrofitClient
+import app.keyboardly.calendar.services.LogoutService
 import app.keyboardly.lib.KeyboardActionDependency
+import app.keyboardly.lib.reflector.DynamicFeature
 import dagger.Component
 import dagger.Module
 import dagger.Provides
+import javax.inject.Named
 import javax.inject.Singleton
+
 
 /**
  * This component for build the default class
@@ -56,4 +61,25 @@ class DynamicModule {
      */
     @Provides
     internal fun bindDynamicImpl(featureImpl: DynamicFeatureImpl): DynamicFeature = featureImpl
+
+    @Provides
+    @Named("getGoogleApi")
+    fun provideGoogleApi(): GoogleApi? {
+        return RetrofitClient.getGoogleApi()
+    }
+
+    @Provides
+    fun provideRetrofitClient(): RetrofitClient {
+        return RetrofitClient()
+    }
+    @Provides
+    fun provideLogOutService(): LogoutService {
+        return LogoutService()
+    }
+
+    @Provides
+    @Named("getGoogleEvents")
+    fun provideGoogleEvents(): GoogleApi? {
+        return RetrofitClient.getGoogleEvents()
+    }
 }

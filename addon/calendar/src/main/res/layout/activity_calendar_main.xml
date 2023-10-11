@@ -24,13 +24,28 @@
 
         <TextView
             android:id="@+id/textHello"
-            style="?textActionKeyboardStyle"
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="12dip"
+            android:layout_marginRight="12dip"
+            android:layout_weight="1"
             android:padding="@dimen/_10sdp"
             android:text="@string/title_calendar"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
             android:textColor="@color/green_default"
             android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/akun_more"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="48dip"
+            android:layout_height="48dip"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="8dip"
+            android:padding="8dip"
+            android:scaleType="centerInside"
+            android:src="@drawable/calendar_baseline_account_circle_24" />
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/view_kalendars"
