@@ -1,5 +1,6 @@
 package app.keyboardly.calendar.action.profil
 
+import app.keyboardly.calendar.databinding.ActivityCalendarProfilBinding
 import app.keyboardly.calendar.databinding.ActivityCalendarSelectBinding
 import app.keyboardly.lib.KeyboardActionDependency
 import app.keyboardly.lib.KeyboardActionView
@@ -7,10 +8,10 @@ import app.keyboardly.lib.KeyboardActionView
 class ProfilActionView(
 dependency: KeyboardActionDependency
 ) : KeyboardActionView(dependency) {
-    private lateinit var binding: ActivityCalendarSelectBinding
+    private lateinit var binding: ActivityCalendarProfilBinding
 
     override fun onCreate() {
-        binding = ActivityCalendarSelectBinding.inflate(getLayoutInflater())
+        binding = ActivityCalendarProfilBinding.inflate(getLayoutInflater())
         viewLayout = binding.root
         initAction()
     }
@@ -18,6 +19,11 @@ dependency: KeyboardActionDependency
     private fun initAction() {
         binding.apply {
 
+            back.apply {
+                setOnClickListener {
+                    dependency.viewAddOnNavigation()
+                }
+            }
         }
     }
 }

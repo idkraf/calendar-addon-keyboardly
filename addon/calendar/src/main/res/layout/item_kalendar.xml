@@ -2,13 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/viewCalendar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/_10sdp"
     android:background="@drawable/calendar_rounded_corner_white">
 
     <TextView
-        android:id="@+id/text_kalendar_account"
+        android:id="@+id/text_kalendar_judul"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -23,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/text_kalendar_name"
+        android:id="@+id/text_kalendar_tgl"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -34,7 +35,7 @@
         android:text="Selasa 15 Agustus 8:00 AM - 9:00 AM"
         app:layout_constraintEnd_toStartOf="@+id/cdelete"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_kalendar_account" />
+        app:layout_constraintTop_toBottomOf="@+id/text_kalendar_judul" />
 
     <ImageButton
         android:id="@+id/csend"
